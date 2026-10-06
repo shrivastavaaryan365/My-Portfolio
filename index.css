@@ -714,6 +714,43 @@ a {
     overflow: hidden;
 }
 
+.project-one {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.35)),
+        url("nova.png") center / cover no-repeat;
+}
+
+
+.project-two {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.35)),
+        url("scms.png") center / cover no-repeat;
+}
+
+.project-three {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.35)),
+        url("novacart.png") center / cover no-repeat;
+}
+
+.project-Four {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.35)),
+        url("mportfolio.png") center / cover no-repeat;
+}
+
+.project-one::before,
+.project-one::after,
+.project-two::before,
+.project-two::after,
+.project-three::before,
+.project-three::after,
+.project-Four::before,
+.project-Four::after {
+    content: none;
+    display: none;
+}
+
 .project-image::before {
     content: "";
 
@@ -752,8 +789,10 @@ a {
 
     font-size: 12px;
     letter-spacing: 3px;
-    color: white;
+    color: #050505;
+    font-weight: bold;
 }
+
 
 .project-content {
     padding: 25px;
