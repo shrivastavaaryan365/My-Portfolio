@@ -337,13 +337,6 @@ a {
         transparent 75%
     );
 
-    animation: rotateRing 7s linear infinite;
-}
-
-@keyframes rotateRing {
-    to {
-        transform: rotate(360deg);
-    }
 }
 
 .profile-ring img {
@@ -351,18 +344,12 @@ a {
     height: 100%;
 
     object-fit: cover;
+    object-position: center 38%;
 
     border-radius: 50%;
 
     border: 7px solid #08080b;
 
-    animation: rotateImage 7s linear infinite reverse;
-}
-
-@keyframes rotateImage {
-    to {
-        transform: rotate(-360deg);
-    }
 }
 
 
@@ -452,7 +439,10 @@ a {
     grid-template-columns: 1fr 1fr;
     gap: 70px;
     padding: 10px;
+    
 }
+
+
 
 .about-text p {
     color: var(--muted);
@@ -532,6 +522,8 @@ a {
 
     overflow: hidden;
     transition: 0.4s;
+
+    cursor: pointer;
 }
 
 .home{
@@ -573,7 +565,7 @@ a {
     border-color: rgba(158, 255, 0, 0.5);
 }
 
-.contact{
+.navbar nav .contact{
     padding: 7px;
     border: 1px solid var(--border);
     border-radius: 7px;
@@ -581,7 +573,7 @@ a {
     border-color:#777;
 }
 
-.contact:hover{
+.navbar nav .contact:hover{
     transform: translateY(-5px);
     border-color: rgba(158, 255, 0, 0.5);
 }
@@ -592,9 +584,14 @@ a {
     padding: 120px 0;
 }
 
+.section.about + .section.skills {
+    margin-top: 24px;
+}
+
 .section.about:hover,
 .section.skills:hover {
-    transform: none;
+    border-color: var(--accent);
+    transform: translateY(-7px);
 }
 
 
@@ -679,6 +676,7 @@ a {
     gap: 25px;
 }
 
+
 .project-card {
     overflow: hidden;
 
@@ -689,6 +687,8 @@ a {
 
     transition: 0.4s;
     margin-top: 25px;
+
+    cursor: pointer;
 }
 
 .project-card:hover {
@@ -882,25 +882,53 @@ a {
 ========================================= */
 
 .contact-box {
+    position: relative;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(32px, 6vw, 80px);
+    align-items: center;
 
-    padding: 45px;
+    padding: clamp(28px, 5vw, 62px);
 
-    border: 1px solid var(--border);
-    border-radius: 20px;
+    border: 1px solid rgba(158, 255, 0, 0.28);
+    border-radius: 6px;
 
-    background: var(--card);
+    background:
+        linear-gradient(135deg, rgba(158, 255, 0, 0.055), transparent 48%),
+        rgba(15, 15, 17, 0.88);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+.contact-box::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.055);
+    border-radius: 3px;
+    pointer-events: none;
 }
 
 .contact-info h3 {
-    font-size: 35px;
-    margin-bottom: 20px;
+    max-width: 360px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(38px, 5vw, 58px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    margin-bottom: 22px;
+}
+
+.contact-info h3::after {
+    content: "";
+    display: block;
+    width: 58px;
+    height: 2px;
+    margin-top: 24px;
+    background: var(--accent);
 }
 
 .contact-info p {
-    max-width: 450px;
+    max-width: 340px;
     color: var(--muted);
     line-height: 1.8;
 }
@@ -908,7 +936,7 @@ a {
 .contact-links {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 .contact-item {
@@ -916,12 +944,13 @@ a {
     align-items: center;
     justify-content: space-between;
 
-    padding: 18px;
+    padding: 19px 20px;
 
-    border: 1px solid var(--border);
-    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.018);
 
-    transition: 0.3s;
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
 }
 
 .contact-item span {
@@ -931,11 +960,20 @@ a {
 
 .contact-item strong {
     font-size: 13px;
+    font-weight: 500;
+    text-align: right;
+    overflow-wrap: anywhere;
 }
 
 .contact-item:hover {
-    border-color: var(--accent);
-    transform: translateX(7px);
+    border-color: rgba(158, 255, 0, 0.55);
+    background: rgba(158, 255, 0, 0.045);
+    transform: translateX(5px);
+}
+
+.contact-item:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
 }
 
 
@@ -1120,7 +1158,7 @@ footer p {
 
     .contact-box {
         grid-template-columns: 1fr;
-        padding: 25px;
+        padding: 34px 24px;
     }
 
     .contact-info h3 {
@@ -1128,9 +1166,12 @@ footer p {
     }
 
     .contact-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 7px;
+        gap: 14px;
+        padding: 16px;
+    }
+
+    .contact-item strong {
+        text-align: right;
     }
 
     .cta {
