@@ -526,7 +526,7 @@ a {
     cursor: pointer;
 }
 
-.home{
+.navbar nav .home{
     padding: 7px;
     border: 1px solid var(--border);
     border-radius: 7px;
@@ -539,7 +539,7 @@ a {
     border-color: rgba(158, 255, 0, 0.5);
 }
 
-.about{
+.navbar nav .about{
     padding: 7px;
     border: 1px solid var(--border);
     border-radius: 7px;
@@ -552,7 +552,7 @@ a {
     border-color: rgba(158, 255, 0, 0.5);
 }
 
-.skills{
+.navbar nav .skills{
     padding: 7px;
     border: 1px solid var(--border);
     border-radius: 7px;
@@ -1224,3 +1224,4 @@ footer p {
     accent-color: #9eff00;
     filter: invert(1) hue-rotate(70deg);
 }
+
